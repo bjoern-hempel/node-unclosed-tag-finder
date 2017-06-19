@@ -40,7 +40,19 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
 
     var unclosedTags = finder.getUnclosedTags(html);
 
-    finder.printUnclosedTags(unclosedTags);
+    if (unclosedTags.length == 0) {
+        console.info('Congratulations! No unclosed tags.');
+    } else {
+        if (unclosedTags.length == 1) {
+            console.info('The following tag doesn\'t seem to be closed');
+        } else {
+            console.info('The following tags don\'t seem to be closed');
+        }   
+
+        for (var i = 0; i < unclosedTags.length; i++) {
+            console.info('line ' + unclosedTags[i].line + ': ' + unclosedTags[i].full);
+        }   
+    }
 });
 ```
 
@@ -94,3 +106,5 @@ line 7: <p>
 line 8: <p>
 line 10: <li>
 ```
+
+Although the script is valid, we found some unclosed html5 tags.
