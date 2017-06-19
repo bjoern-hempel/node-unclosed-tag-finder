@@ -24,7 +24,7 @@ A library that finds unclosed html5 tags that are normally optional. These optio
 user$ npm install unclosed-tag-finder
 ```
 
-## Usage
+## Usage (in short)
 
 ```
 user$ npm install unclosed-tag-finder
@@ -81,7 +81,7 @@ line 8: <p>
 line 10: <li>
 ```
 
-## Example
+## Full example with html5 file
 
 Create a W3C valid html5 file (but with some unclosed tags):
 
