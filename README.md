@@ -18,18 +18,66 @@ A library that finds unclosed html5 tags that are normally optional (via W3C che
 - tfoot
 - colgroup
 
-## Install
+## Install (in general)
 
 ```
 user$ npm install unclosed-tag-finder
 ```
 
-## Usage (in short)
+## Usage (the command line version)
+
+```
+user$ npm install unclosed-tag-finder -g
+```
+
+Create a W3C valid html5 file (but with some unclosed tags):
+
+```
+user$ vi w3cValid.html
+```
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <p>123
+        <p>456
+        <ul>
+            <li>123
+        </ul>
+    </body>
+</html>
+```
+
+Install a W3C checker and check the file. You will see that the w3c checker above will accept the unclosed tags:
+
+```
+user$ npm install html-validator-cli -g
+user$ html-validator --file=w3cValid.html 
+Page is valid
+```
+
+The page is valid. Now use the unclosed-tag-finder to find unclosed html5 tags:
 
 ```
 user$ npm install unclosed-tag-finder
 user$ vi listUnclosedTags.js
 ```
+
+```
+user$ unclosed-tag-finder w3cValid.html                                                                  
+The following tags don't seem to be closed
+line 7: <p>
+line 8: <p>
+line 10: <li>
+```
+
+Although the html file is valid, we found some unclosed html5 tags.
+
+## Use this library inside your own scripts
 
 ```js
 #!/usr/bin/env node
@@ -74,56 +122,17 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
 
 ```
 user$ chmod 775 listUnclosedTags.js
-user$ ./listUnclosedTags.js test.html 
+```
+
+Now check the file with the listUnclosedTags.js script:
+
+```
+user$ ./listUnclosedTags.js w3cValid.html
 The following tags don't seem to be closed
 line 7: <p>
 line 8: <p>
 line 10: <li>
 ```
-
-## Full example with html5 file
-
-Create a W3C valid html5 file (but with some unclosed tags):
-
-```
-user$ vi w3cValid.html
-```
-
-```
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>test</title>
-    </head>
-    <body>
-        <p>123
-        <p>456
-        <ul>
-            <li>123                                                                                                                                                                                       
-        </ul>
-    </body>
-</html>
-```
-
-Install a W3C checker and check the file (the w3c checker above will accept the unclosed tags):
-
-```
-user$ npm install html-validator-cli -g
-user$ html-validator --file=w3cValid.html 
-Page is valid
-```
-
-The page is valid. Now check the file with the listUnclosedTags.js script (see [Usage](#user-content-usage)):
-
-```
-user$ ./listUnclosedTags.js test.html 
-The following tags don't seem to be closed
-line 7: <p>
-line 8: <p>
-line 10: <li>
-```
-
-Although the script is valid, we found some unclosed html5 tags.
 
 ## More informations and source code
 
