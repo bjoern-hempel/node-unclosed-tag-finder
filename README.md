@@ -56,6 +56,12 @@ user$ html-validator --file=w3cValid.html
 Page is valid
 ```
 
+or
+
+```
+user$ xmllint --html --noout w3cValid.html
+```
+
 The page is valid.
 
 ### Find unclosed tags within this valid html5 file
