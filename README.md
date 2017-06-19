@@ -85,7 +85,7 @@ user$ html-validator --file=w3cValid.html
 Page is valid
 ```
 
-The page is valid. Now check the file with the listUnclosedTags.js script (see [Usage](#Usage)):
+The page is valid. Now check the file with the listUnclosedTags.js script (see [Usage](#user-content-usage)):
 
 ```
 user$ ./listUnclosedTags.js test.html 
