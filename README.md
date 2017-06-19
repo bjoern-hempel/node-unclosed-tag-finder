@@ -1,6 +1,22 @@
 # node-unclosed-tag-finder
 
-> A library that finds unclosed html5 tags, that are normally optional.
+> A library that finds unclosed html5 tags, that are normally optional. These optional tags could be:
+
+- html
+- head
+- body
+- p
+- dt
+- dd
+- li
+- option
+- thead
+- th
+- tbody
+- tr
+- td
+- tfoot
+- colgroup
 
 ## Install
 
@@ -89,7 +105,7 @@ user$ vi w3cValid.html
 </html>
 ```
 
-Install a W3C checker and check the file:
+Install a W3C checker and check the file (the w3c checker above will accept the unclosed tags):
 
 ```
 user$ npm install html-validator-cli -g
