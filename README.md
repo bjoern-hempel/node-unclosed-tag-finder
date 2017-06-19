@@ -18,19 +18,15 @@ A library that finds unclosed html5 tags that are normally optional (via W3C che
 - tfoot
 - colgroup
 
-## Install (in general)
-
-```
-user$ npm install unclosed-tag-finder
-```
-
-## Usage (the command line version)
+## Installation
 
 ```
 user$ npm install unclosed-tag-finder -g
 ```
 
-Create a W3C valid html5 file (but with some unclosed tags):
+## Usage (the command line version)
+
+### Create a valid html5 file (but with some unclosed tags)
 
 ```
 user$ vi w3cValid.html
@@ -52,7 +48,7 @@ user$ vi w3cValid.html
 </html>
 ```
 
-Install a W3C checker and check the file. You will see that the w3c checker above will accept the unclosed tags:
+### Check the html5 file with a w3c checker of your choice
 
 ```
 user$ npm install html-validator-cli -g
@@ -60,12 +56,9 @@ user$ html-validator --file=w3cValid.html
 Page is valid
 ```
 
-The page is valid. Now use the unclosed-tag-finder to find unclosed html5 tags:
+The page is valid.
 
-```
-user$ npm install unclosed-tag-finder
-user$ vi listUnclosedTags.js
-```
+### Find unclosed tags within this valid html5 file
 
 ```
 user$ unclosed-tag-finder w3cValid.html                                                                  
