@@ -75,7 +75,7 @@ user$ vi w3cValid.html
         </ul>
     </body>
 </html>
-
+```
 
 Install a W3C checker and check the file:
 
@@ -85,7 +85,7 @@ user$ html-validator --file=w3cValid.html
 Page is valid
 ```
 
-The page is valid. Now check the file with the listUnclosedTags.js script (see Usage):
+The page is valid. Now check the file with the listUnclosedTags.js script (see #Usage):
 
 ```
 user$ ./listUnclosedTags.js test.html 
