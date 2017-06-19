@@ -1,6 +1,6 @@
 # node-unclosed-tag-finder
 
-> A library that finds unclosed html5 tags, that are normally optional. These optional tags could be:
+A library that finds unclosed html5 tags, that are normally optional. These optional tags could be:
 
 - html
 - head
