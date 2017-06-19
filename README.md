@@ -10,6 +10,11 @@ $ npm install unclosed-tag-finder
 
 ## Usage
 
+```
+user$ npm install unclosed-tag-finder
+user$ vi listUnclosedTags.js
+```
+
 ```js
 #!/usr/bin/env node
 
@@ -38,3 +43,16 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
     finder.printUnclosedTags(unclosedTags);
 });
 ```
+
+```
+user$ chmod 775 listUnclosedTags.js
+user$ ./listUnclosedTags.js test.html 
+The following tags don't seem to be closed
+line 7: <p>
+line 8: <p>
+line 10: <li>
+```
+
+## Example
+
+
