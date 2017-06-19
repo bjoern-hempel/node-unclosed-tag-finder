@@ -1,6 +1,6 @@
 # Unclosed Tag Finder
 
-A library that finds unclosed html5 tags that are normally optional. These optional tags could be:
+A library that finds unclosed html5 tags that are normally optional (via W3C check). These optional tags could be:
 
 - html
 - head
@@ -124,3 +124,9 @@ line 10: <li>
 ```
 
 Although the script is valid, we found some unclosed html5 tags.
+
+## License
+
+ISC © [Björn Hempel](https://www.ixno.de)
+
+More informations and the source code you will find at [GitHub](https://github.com/bjoern-hempel/node-unclosed-tag-finder)
