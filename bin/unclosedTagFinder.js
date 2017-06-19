@@ -24,6 +24,7 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
 
     if (unclosedTags.length == 0) {
         console.info('Congratulations! No unclosed tags.');
+        process.exit(0);
     } else {
         if (unclosedTags.length == 1) {
             console.info('The following tag doesn\'t seem to be closed');
@@ -34,6 +35,8 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
         for (var i = 0; i < unclosedTags.length; i++) {
             console.info('line ' + unclosedTags[i].line + ': ' + unclosedTags[i].full);
         }
+
+        process.exit(1);
     }
 });
 
