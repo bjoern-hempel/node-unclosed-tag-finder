@@ -125,8 +125,11 @@ line 10: <li>
 
 Although the script is valid, we found some unclosed html5 tags.
 
+## More informations and source code
+
+More informations and the source code you will find at [GitHub](https://github.com/bjoern-hempel/node-unclosed-tag-finder)
+
 ## License
 
 ISC © [Björn Hempel](https://www.ixno.de)
 
-More informations and the source code you will find at [GitHub](https://github.com/bjoern-hempel/node-unclosed-tag-finder)
