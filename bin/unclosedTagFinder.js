@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /* load some libraries */
-var unclosedTagFinder = require('./unclosed-tag-finder');
+var unclosedTagFinder = require('unclosed-tag-finder');
 var fs = require('fs');
 
 var finder = new unclosedTagFinder.builder();
