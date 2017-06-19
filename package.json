@@ -1,10 +1,13 @@
 {
     "name": "unclosed-tag-finder",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A library to find unclosed html5 tags, that are normally optional.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "unclosed-tag-finder": "bin/unclosedTagFinder.js"
     },
     "author": "Björn Hempel <bjoern@hempel.li>",
     "license": "MIT"
