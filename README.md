@@ -55,4 +55,42 @@ line 10: <li>
 
 ## Example
 
+Create a W3C valid html5 file (but with some unclosed tags):
 
+```
+user$ vi w3cValid.html
+```
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <p>123
+        <p>456
+        <ul>
+            <li>123                                                                                                                                                                                       
+        </ul>
+    </body>
+</html>
+
+
+Install a W3C checker and check the file:
+
+```
+user$ npm install html-validator-cli -g
+user$ html-validator --file=w3cValid.html 
+Page is valid
+```
+
+The page is valid. Now check the file with the listUnclosedTags.js script (see Usage):
+
+```
+user$ ./listUnclosedTags.js test.html 
+The following tags don't seem to be closed
+line 7: <p>
+line 8: <p>
+line 10: <li>
+```
