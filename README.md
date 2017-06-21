@@ -68,10 +68,14 @@ The page is valid.
 
 ```
 user$ unclosed-tag-finder w3cValid.html                                                                  
-The following tags don't seem to be closed
-line 7: <p>
-line 8: <p>
-line 10: <li>
+codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
+<p>
+
+codequality/valid-utf8-unclosed.html:8 (missing close tag: <p/>)
+<p>
+
+codequality/valid-utf8-unclosed.html:10 (missing close tag: <li/>)
+<li>
 ```
 
 Although the html file is valid, we found some unclosed html5 tags.
