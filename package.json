@@ -1,6 +1,6 @@
 {
     "name": "unclosed-tag-finder",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "A library to find unclosed html5 tags, that are normally optional.",
     "main": "index.js",
     "scripts": {
