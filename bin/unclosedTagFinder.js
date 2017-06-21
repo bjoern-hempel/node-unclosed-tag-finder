@@ -20,7 +20,7 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
         return;
     }
 
-    var unclosedTags = finder.getUnclosedTags(html);
+    var unclosedTags = finder.getUnclosedTags(html, process.argv[2]);
 
     var returnValue = finder.printUnclosedTags(unclosedTags);
 
