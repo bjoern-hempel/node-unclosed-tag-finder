@@ -206,7 +206,7 @@ exports.builder.prototype.isSelfClosing = function(tagName) {
 exports.builder.prototype.printUnclosedTags = function(unclosedTags) {
 
     if (unclosedTags.length == 0) {
-        return;
+        return 0;
     }
 
     /* prints out missing close tag issues */
@@ -226,4 +226,6 @@ exports.builder.prototype.printUnclosedTags = function(unclosedTags) {
             console.info('');
         }
     }
+
+    return 1;
 };
