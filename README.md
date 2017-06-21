@@ -152,6 +152,7 @@ codequality/valid-utf8-unclosed.html:10 (missing close tag: <li/>)
 ## More informations and source code
 
 You will find more informations and the source code at [GitHub](https://github.com/bjoern-hempel/node-unclosed-tag-finder).
+
 For an executable npm package please have a look at [npmjs.com](https://www.npmjs.com/package/unclosed-tag-finder).
 
 ## License
