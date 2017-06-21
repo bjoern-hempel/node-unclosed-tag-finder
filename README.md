@@ -104,17 +104,25 @@ fs.readFile(process.argv[2], 'utf-8', function(err, html) {
     var unclosedTags = finder.getUnclosedTags(html);
 
     if (unclosedTags.length == 0) {
-        console.info('Congratulations! No unclosed tags.');
-    } else {
-        if (unclosedTags.length == 1) {
-            console.info('The following tag doesn\'t seem to be closed');
-        } else {
-            console.info('The following tags don\'t seem to be closed');
-        }   
+        return;
+    }   
 
-        for (var i = 0; i < unclosedTags.length; i++) {
-            console.info('line ' + unclosedTags[i].line + ': ' + unclosedTags[i].full);
-        }   
+    /* prints out missing close tag issues */
+    for (var i = 0; i < unclosedTags.length; i++) {
+        if (unclosedTags[i].hasNoCloseTag) {
+            console.info(unclosedTags[i].filename + ':' + unclosedTags[i].line + ' (missing close tag: <' + unclosedTags[i].name + '/>)');
+            console.info(unclosedTags[i].tag);
+            console.info('');
+        }
+    }
+
+    /* prints out missing open tag issues */
+    for (var i = 0; i < unclosedTags.length; i++) {
+        if (unclosedTags[i].hasNoOpenTag) {
+            console.info(unclosedTags[i].filename + ':' + unclosedTags[i].line + ' (missing open tag: <' + unclosedTags[i].name + '>)');
+            console.info(unclosedTags[i].tag);
+            console.info('');
+        }
     }
 });
 ```
@@ -127,10 +135,14 @@ Now check the file with the listUnclosedTags.js script:
 
 ```
 user$ ./listUnclosedTags.js w3cValid.html
-The following tags don't seem to be closed
-line 7: <p>
-line 8: <p>
-line 10: <li>
+codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
+<p>
+
+codequality/valid-utf8-unclosed.html:8 (missing close tag: <p/>)
+<p>
+
+codequality/valid-utf8-unclosed.html:10 (missing close tag: <li/>)
+<li>
 ```
 
 ## More informations and source code
