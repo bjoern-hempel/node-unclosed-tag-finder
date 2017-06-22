@@ -29,7 +29,7 @@ user$ npm install unclosed-tag-finder -g
 ### Create a valid html5 file (but with some unclosed tags)
 
 ```
-user$ vi w3cValid.html
+user$ vi valid-utf8-unclosed.html
 ```
 
 ```
@@ -52,14 +52,14 @@ user$ vi w3cValid.html
 
 ```
 user$ npm install html-validator-cli -g
-user$ html-validator --file=w3cValid.html 
+user$ html-validator --file=valid-utf8-unclosed.html
 Page is valid
 ```
 
 or
 
 ```
-user$ xmllint --html --noout w3cValid.html
+user$ xmllint --html --noout valid-utf8-unclosed.html
 ```
 
 The page is valid.
@@ -67,7 +67,7 @@ The page is valid.
 ### Find unclosed tags within this valid html5 file
 
 ```
-user$ unclosed-tag-finder w3cValid.html                                                                  
+user$ unclosed-tag-finder valid-utf8-unclosed.html                                                                 
 codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
 <p>
 
@@ -138,7 +138,7 @@ user$ chmod 775 listUnclosedTags.js
 Now check the file with the listUnclosedTags.js script:
 
 ```
-user$ ./listUnclosedTags.js w3cValid.html
+user$ ./listUnclosedTags.js valid-utf8-unclosed.html
 codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
 <p>
 
