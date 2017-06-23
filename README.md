@@ -36,11 +36,13 @@ user$ vi valid-utf8-unclosed.html
 <!DOCTYPE html>
 <html>
     <head>
-        <title>test</title>
+        <title>Das sind Umlaute: öäü</title>
     </head>
     <body>
-        <p>123
-        <p>456
+        <p  
+            class="test"
+        >Das ist ein Test.<br />                                                                                                                                                                          
+        <p>äöü
         <ul>
             <li>123
         </ul>
@@ -68,14 +70,17 @@ The page is valid.
 
 ```
 user$ unclosed-tag-finder valid-utf8-unclosed.html                                                                 
-codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
-<p>
+valid-utf8-unclosed.html:7 (missing close tag: <p/>)
+opening tag: <p
+            class="test"
+        >
 
-codequality/valid-utf8-unclosed.html:8 (missing close tag: <p/>)
-<p>
+valid-utf8-unclosed.html:10 (missing close tag: <p/>)
+opening tag: <p>
 
-codequality/valid-utf8-unclosed.html:10 (missing close tag: <li/>)
-<li>
+valid-utf8-unclosed.html:12 (missing close tag: <li/>)
+opening tag: <li>
+
 ```
 
 Although the html file is valid, we found some unclosed html5 tags.
@@ -139,14 +144,17 @@ Now check the file with the listUnclosedTags.js script:
 
 ```
 user$ ./listUnclosedTags.js valid-utf8-unclosed.html
-codequality/valid-utf8-unclosed.html:7 (missing close tag: <p/>)
-<p>
+valid-utf8-unclosed.html:7 (missing close tag: <p/>)
+opening tag: <p
+            class="test"
+        >
 
-codequality/valid-utf8-unclosed.html:8 (missing close tag: <p/>)
-<p>
+valid-utf8-unclosed.html:10 (missing close tag: <p/>)
+opening tag: <p>
 
-codequality/valid-utf8-unclosed.html:10 (missing close tag: <li/>)
-<li>
+valid-utf8-unclosed.html:12 (missing close tag: <li/>)
+opening tag: <li>
+
 ```
 
 ## More informations and source code
