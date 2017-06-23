@@ -63,7 +63,7 @@ exports.builder.prototype.getUnclosedTags = function(html, filename) {
             tags.push({
                 tag: matchedTag.replace(/^(<\/?[a-z0-9]+):([0-9]+)/gi, '$1'),
                 name: matches[1],
-                line: matches[2],
+                line: parseInt(matches[2]),
                 closing: matchedTag[1] === '/'
             });
         }
