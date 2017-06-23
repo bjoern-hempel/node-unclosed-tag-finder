@@ -30,36 +30,43 @@ exports.builder.prototype.selfClosingTags = [
     'wbr'
 ];
 
+/**
+ * Extracts the unclosed tags from given html string.
+ *
+ */
 exports.builder.prototype.getUnclosedTags = function(html, filename) {
 
     var unclosedTags = [];
 
     var lines = html.split('\n');
 
+    /* mark each tag with line number */
+    for (var i = 0; i < lines.length; i++) {
+        lines[i] = lines[i].replace(/(<\/?[a-z0-9]+)/gi, String('$1:') + String(i + 1));
+    }
+
+    html = lines.join('\n');
+
     /* saves all tags that where found at the html variable */
     var tags = [];
 
-    /* scan each line */
-    for (var i = 0; i < lines.length; i++) {
+    /* find opening and closing html tags */
+    var matchedTags = html.match(/<[^>]*[^/]>/g) || [];
 
-        /* find opening and closing html tags */
-        var matchedTags = lines[i].match(/<[^>]*[^/]>/g) || [];
+    for (var j = 0; j < matchedTags.length; j++) {
 
-        for (var j = 0; j < matchedTags.length; j++) {
+        var matchedTag = matchedTags[j];
 
-            var matchedTag = matchedTags[j];
+        var matches = matchedTag.match(/<\/?([a-z0-9]+):([0-9]+)/i);
 
-            var matches = matchedTag.match(/<\/?([a-z0-9]+)/i);
-
-            if (matches) {
-                tags.push({
-                    tag: matchedTag,
-                    name: matches[1],
-                    line: i + 1,
-                    closing: matchedTag[1] === '/'
-                });
-            }
-        };
+        if (matches) {
+            tags.push({
+                tag: matchedTag.replace(/^(<\/?[a-z0-9]+):([0-9]+)/gi, '$1'),
+                name: matches[1],
+                line: matches[2],
+                closing: matchedTag[1] === '/'
+            });
+        }
     };
 
     /* no html tags found */
@@ -213,7 +220,7 @@ exports.builder.prototype.printUnclosedTags = function(unclosedTags) {
     for (var i = 0; i < unclosedTags.length; i++) {
         if (unclosedTags[i].hasNoCloseTag) {
             console.info(unclosedTags[i].filename + ':' + unclosedTags[i].line + ' (missing close tag: <' + unclosedTags[i].name + '/>)');
-            console.info(unclosedTags[i].tag);
+            console.info('opening tag: ' + unclosedTags[i].tag);
             console.info('');
         }
     }
@@ -222,7 +229,7 @@ exports.builder.prototype.printUnclosedTags = function(unclosedTags) {
     for (var i = 0; i < unclosedTags.length; i++) {
         if (unclosedTags[i].hasNoOpenTag) {
             console.info(unclosedTags[i].filename + ':' + unclosedTags[i].line + ' (missing open tag: <' + unclosedTags[i].name + '>)');
-            console.info(unclosedTags[i].tag);
+            console.info('closing tag: ' + unclosedTags[i].tag);
             console.info('');
         }
     }
