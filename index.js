@@ -38,6 +38,9 @@ exports.builder.prototype.getUnclosedTags = function(html, filename) {
 
     var unclosedTags = [];
 
+    /* remove all inline script tags (<script></script>) */
+    html = html.replace(/<script[^>]*>(.|\n)*?<\/script>/gi, '');
+
     var lines = html.split('\n');
 
     /* mark each tag with line number */
